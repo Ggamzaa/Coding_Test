@@ -3,16 +3,14 @@ raw_input = """
         7 2 1 8 4 3 5 6
         """
 
-n = int(input())
-print(n)
+N = int(input().strip())
+P = list(map(int, input().split()))
 
-numbers = list(map(int, input().split()))
-print(numbers)
+dp = [[float('-inf')] * 2 for _ in range(N + 1)]
+dp[0][0] = 0  # 아무것도 안 먹었을 때
 
-eat = 0
-# 언제 안먹을지 어떻게 결정??
-# 일단 첫번째는 먹어야 하나?
+for i in range(1, N + 1):
+    dp[i][0] = max(dp[i-1][0], dp[i-1][1] - P[i-1])
+    dp[i][1] = max(dp[i-1][1], dp[i-1][0] + P[i-1])
 
-
-for i in numbers:
-    print(i)
+print(dp[N][1])

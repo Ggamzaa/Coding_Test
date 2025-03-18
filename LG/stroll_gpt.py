@@ -1,4 +1,5 @@
 import sys
+
 input = sys.stdin.readline  # 코테용 빠른 입력 처리
 
 # 입력
