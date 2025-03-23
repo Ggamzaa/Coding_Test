@@ -1,4 +1,5 @@
 import sys
+import heapq
 
 input = sys.stdin.readline  # 코테용 빠른 입력 처리
 
@@ -9,16 +10,10 @@ classes.sort()  # 시작 시간 기준 정렬
 
 rooms = []  # 강의실 끝나는 시간 저장
 
+heap = []
 for s, t in classes:
-    placed = False
-    # 현재 열려있는 강의실 순회
-    for i in range(len(rooms)):
-        if rooms[i] <= s:
-            rooms[i] = t  # 강의실 재사용
-            placed = True
-            break
-        
-    if not placed:
-        rooms.append(t)  # 새 강의실 추가
+    if heap and heap[0] <= s:
+        heapq.heappop(heap)
+    heapq.heappush(heap, t)
 
-print(len(rooms))
+print(len(heap))
