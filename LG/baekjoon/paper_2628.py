@@ -6,6 +6,7 @@ n = int(input())
 garo_cut = [0, ga]
 sero_cut = [0, se]
 
+# 자를 위치 저장 → 정렬 → 구간 크기 계산 
 for _ in range(n):
     d, l = map(int, input().split())
     if d == 0:
