@@ -7,7 +7,7 @@ n,m= map(int,input().split())
 visited = [False] * (n + 1)
 result = []
 
-def dfs(depth):
+def dfs(depth):                                                                                                                                                                    
     if depth == m:
         print(' '.join(map(str, result)))
         return
