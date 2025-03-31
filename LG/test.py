@@ -1,16 +1,24 @@
-aw_input = """
-        8
-        7 2 1 8 4 3 5 6
-        """
+n = int(input())
+heights = list(map(int,input().split()))
 
-N = int(input().strip())
-P = list(map(int, input().split()))
+stack = []
+result = []
 
-dp = [[float('-inf')] * 2 for _ in range(N + 1)]
-dp[0][0] = 0  # 아무것도 안 먹었을 때
+for i in range(n):
+    # 현재 탑의 높이
+    current_height = heights[i]
 
-for i in range(1, N + 1):
-    dp[i][0] = max(dp[i-1][0], dp[i-1][1] - P[i-1])
-    dp[i][1] = max(dp[i-1][1], dp[i-1][0] + P[i-1])
+    # 스택에서 나보다 낮은 탑은 제거
+    while stack and stack[-1][1] < current_height:
+        stack.pop()
+    
+    # 스택이 비었으면 0, 아니면 스택의 top이 레이저가 닿는 탑
+    if not stack:
+        result.append(0)
+    else:
+        result.append(stack[-1][0] + 1)  # 인덱스는 1부터 시작하므로 +1
 
-print(dp[N][1])
+    # 현재 탑을 스택에 넣음
+    stack.append((i, current_height))
+
+print(' '.join(map(str, result)))
