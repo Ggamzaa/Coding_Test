@@ -19,6 +19,7 @@ for i in range(n):
         result.append(stack[-1][0] + 1)  # 인덱스는 1부터 시작하므로 +1
 
     # 현재 탑을 스택에 넣음
+
     stack.append((i, current_height))
 
 print(' '.join(map(str, result)))
