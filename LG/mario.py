@@ -6,6 +6,7 @@ raw_input = """
 N = int(input().strip())
 P = list(map(int, input().split()))
 
+# dp를 위한 배열 생성
 dp = [[float('-inf')] * 2 for _ in range(N + 1)]
 dp[0][0] = 0  # 아무것도 안 먹었을 때
 
