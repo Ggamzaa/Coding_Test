@@ -3,20 +3,23 @@ import sys
 input = sys.stdin.readline
 
 n = int(input())
-glass = [int(input()) for _ in range(n)]
+wine = [int(input()) for _ in range(n)]
 
 if n == 1:
-    print(glass[0])
+    print(wine[0])
 elif n == 2:
-    print(glass[0] + glass[1])
+    print(wine[0] + wine[1])
 else:
     dp = [0] * n
-    dp[0] = glass[0]
-    dp[1] = glass[0] + glass[1]
-    dp[2] = max(glass[0] + glass[2], glass[1] + glass[2])
-    # dp[2] = max(glass[0] + glass[1], dp[2])
+    dp[0] = wine[0]
+    dp[1] = wine[0] + wine[1]
+    dp[2] = max(wine[0] + wine[2], wine[1] + wine[2], dp[1])
 
     for i in range(3, n):
-        dp[i] = max(dp[i-2] + glass[i], dp[i-3] + glass[i-1] + glass[i])
+        dp[i] = max(
+            dp[i-1],
+            dp[i-2] + wine[i],
+            dp[i-3] + wine[i-1] + wine[i]
+        )
 
     print(dp[-1])
