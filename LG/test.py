@@ -16,7 +16,7 @@ else:
     dp[1] = wine[0] + wine[1]
     dp[2] = max(wine[0] + wine[2], wine[1] + wine[2], dp[1])
 
-    # 
+    # 초기값 이외의 계산
     for i in range(3, n):
         dp[i] = max(
             dp[i-1],
