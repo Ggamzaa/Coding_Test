@@ -45,10 +45,10 @@ for test_case in range(1, T + 1):
     x, y, n = map(int, input().split())
     count = 0
 
-    print("testcase")
-    print(x,y,n)
+    # print("testcase")
+    # print(x,y,n)
 
-    while (x <= n) or (y <= n):
+    while (x <= n) and (y <= n):
         if x <= y:
             x += y
             count += 1 
